@@ -14,11 +14,11 @@ In order to run the populator, you can run `go run cmd/populator/main.go`. As me
 
 ## Results
 These are the results from one of the runs:
-| | T3.nano      | M6In.xlarge |
-| | ----------- | ----------- |
-| min | 19      | 16       |
-| max| 243   | 291        |
-| avg | 39      | 41       |
+| Metric | T3.nano      | M6In.xlarge |
+| -----  | -----------  | ----------- |
+| min | 19  | 16 |
+| max| 243 | 291  |
+| avg | 39 | 41  |
 In this run, the reads were sequential and therefore we did not see any noticable performance difference.
 Following graph shows a scatter plot of fetch times as time progresses:
 ![performance comparision](comparision.png)
