@@ -19,6 +19,8 @@ These are the results from one of the runs:
 | min | 19  | 16 |
 | max| 243 | 291  |
 | avg | 39 | 41  |
+
+
 In this run, the reads were sequential and therefore we did not see any noticable performance difference.
 Following graph shows a scatter plot of fetch times as time progresses:
 ![performance comparision](comparision.png)
