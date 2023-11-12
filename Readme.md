@@ -13,7 +13,7 @@ In order to run the benchmark, you can run\_test.sh file after providing a role 
 In order to run the populator, you can run `go run cmd/populator/main.go`. As mentioned in the introduction, you may need to configure the parameters in [pkg/common.go](pkg/common.go).
 
 ## Results
-These are the results from one of the runs:
+These are the results from one of the runs where we fetched 512 bytes 1000 times:
 | Metric | T3.nano      | M6In.xlarge |
 | -----  | -----------  | ----------- |
 | min | 19  | 16 |
@@ -24,4 +24,5 @@ These are the results from one of the runs:
 In this run, the reads were sequential and therefore we did not see any noticable performance difference.
 Following graph shows a scatter plot of fetch times as time progresses:
 ![performance comparision](comparision.png)
-Initially, there is a lot of variability in the fetch times however, they converge to around 50ms after the first few fetch operations.
+
+Initially, there is a lot of variability in the fetch times however, they converge to around 40ms after the first few fetch operations. Therefore, if we ignore the first 100 entries, then we see that the average fetch time was around 35 milliseconds. 
