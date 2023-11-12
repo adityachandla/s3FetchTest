@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'EC2 Spot Instance with Ubuntu'
+
+Parameters:
+  InstanceTypeParameter:
+    Type: String
+    Default: t3.micro
+    Description: Enter instance type.
+
+Resources:
+  TestInstance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !Ref InstanceTypeParameter
+      IamInstanceProfile: !Ref TestInstanceProfile
+      ImageId: ami-06dd92ecc74fdfb36  # Ubuntu Server 22.04
+      KeyName: graphDb
+      SecurityGroups: [!Ref 'InstanceSecurityGroup']
+
+  TestInstanceProfile:
+    Type: "AWS::IAM::InstanceProfile"
+    Properties:
+      Path: "/"
+      Roles:
+        - S3Ec2Access
+
+  InstanceSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: 'Enable SSH access'
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0  # Allow SSH access from any IP.
+
+Outputs:
+  InstanceIP:
+    Description: 'IP address of the instance'
+    Value: !GetAtt TestInstance.PublicIp
+    Export:
+      Name: !Sub 'InstanceId-${AWS::StackName}'
+# Stack name TestInstanceStack

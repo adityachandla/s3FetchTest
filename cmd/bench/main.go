@@ -18,7 +18,7 @@ func main() {
 	runs := flag.Int("runs", 10, "Number of objects to fetch")
 	size := flag.Int("size", 128, "Size of fetched info in bytes")
 	flag.Parse()
-	cfg, err := config.LoadDefaultConfig(context.TODO())
+	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("eu-central-1"))
 	if err != nil {
 		log.Fatal(err)
 	}
