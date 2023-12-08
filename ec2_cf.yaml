@@ -4,7 +4,7 @@ Description: 'EC2 Spot Instance with Ubuntu'
 Parameters:
   InstanceTypeParameter:
     Type: String
-    Default: t3.micro
+    Default: t4g.nano
     Description: Enter instance type.
 
 Resources:
@@ -13,8 +13,8 @@ Resources:
     Properties:
       InstanceType: !Ref InstanceTypeParameter
       IamInstanceProfile: !Ref TestInstanceProfile
-      ImageId: ami-06dd92ecc74fdfb36  # Ubuntu Server 22.04
-      KeyName: graphDb
+      ImageId: ami-0d3407241b2b6ec62  # Ubuntu Server 22.04
+      KeyName: graphDbIreland
       SecurityGroups: [!Ref 'InstanceSecurityGroup']
 
   TestInstanceProfile:

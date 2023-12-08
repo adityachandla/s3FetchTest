@@ -41,7 +41,7 @@ func RandomArray(size int) byteArray {
 }
 
 func main() {
-	cfg, err := config.LoadDefaultConfig(context.TODO())
+	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("eu-west-1"))
 	if err != nil {
 		log.Fatal(err)
 	}
